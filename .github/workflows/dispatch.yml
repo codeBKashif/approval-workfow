@@ -4,11 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       branch:
-      description: 'Run wokflow on'
-      default: 'stage'
-      type: choice
-      options:
-        - 'stage'
+        description: 'Select a branch'
+        required: true
+        default: 'main'
+        type: choice
+        options:
+          - 'main'
+          - 'dev'
+          - 'staging'
 
 
 jobs:
