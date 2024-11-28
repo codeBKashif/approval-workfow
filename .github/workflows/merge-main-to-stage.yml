@@ -1,0 +1,28 @@
+name: Merge Main to Stage
+
+permissions:
+  contents: write 
+  
+on:
+  workflow_dispatch:
+
+jobs:
+  merge_to_stage:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set Up Git User
+      run: |
+        git config --global user.name "codeBKashif"
+        git config --global user.email "temujin398@gmail.com"
+
+    - name: Merge Main into Stage
+      run: |
+        git fetch origin stage
+        git checkout stage
+        
+        git pull origin main --no-rebase --allow-unrelated-histories
+        git push origin stage
