@@ -34,6 +34,10 @@ jobs:
         
         # Check if there are any renames
         git status
+        if [ -z "$(git status --porcelain)" ]; then
+          echo "No changes to commit after merge."
+          exit 0
+        fi
         
         # Commit the changes (including renames and deletions)
         git commit -m "Merged main into stage and handled renames/deletions"
