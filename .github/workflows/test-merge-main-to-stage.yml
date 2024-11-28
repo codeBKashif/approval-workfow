@@ -27,20 +27,4 @@ jobs:
         git checkout stage
         
         git merge origin/main --no-ff --allow-unrelated-histories -m "Merged main into stage"
-        
-        # Handle file deletions and renames explicitly
-        # Stage all changes (including deleted files and renames)
-        git add -A
-        
-        # Check if there are any renames
-        git status
-        if [ -z "$(git status --porcelain)" ]; then
-          echo "No changes to commit after merge."
-          git push origin stage
-          exit 0
-        fi
-        
-        # Commit the changes (including renames and deletions)
-        git commit -m "Merged main into stage and handled renames/deletions"
-        
         git push origin stage
