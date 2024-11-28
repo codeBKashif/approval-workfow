@@ -19,7 +19,7 @@ jobs:
 
     - name: Merge Main into Stage
       run: |
-        git fetch origin
+        git fetch origin stage
         git checkout stage
-        git merge origin/main --no-ff -m "Merge main into stage"
+        git merge origin/main --no-ff --allow-unrelated-histories -m "Merged main into stage"
         git push origin stage
