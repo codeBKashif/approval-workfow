@@ -23,7 +23,5 @@ jobs:
       run: |
         git fetch origin stage
         git checkout stage
-        git merge origin/main --no-ff --allow-unrelated-histories 
-        git add -A
-        git commit -m "Merged main into stage"
+        git pull origin main --no-rebase
         git push origin stage
