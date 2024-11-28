@@ -1,0 +1,17 @@
+name: Trigger after stage merge
+
+on:
+  workflow_run:
+    workflows: ["Merge Main to Stage"]  # Name of the first workflow
+    types:
+      - completed  # Trigger when Workflow A completes (success or failure)
+
+jobs:
+  post_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Post Deployment Tasks
+        run: echo "Running post-deployment tasks"
