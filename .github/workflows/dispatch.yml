@@ -2,6 +2,13 @@ name: Manual Trigger Example
 
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+      description: 'Run wokflow on'
+      default: 'stage'
+      type: choice
+      options:
+        - 'stage'
 
 
 jobs:
