@@ -36,6 +36,7 @@ jobs:
         git status
         if [ -z "$(git status --porcelain)" ]; then
           echo "No changes to commit after merge."
+          git push origin stage
           exit 0
         fi
         
