@@ -22,6 +22,20 @@ jobs:
     - name: Merge Main into Stage
       run: |
         git fetch origin stage
+        git fetch origin main
+        
         git checkout stage
-        git pull origin main --no-rebase --allow-unrelated-histories
+        
+        git merge origin/main --no-ff --allow-unrelated-histories -m "Merged main into stage"
+        
+        # Handle file deletions and renames explicitly
+        # Stage all changes (including deleted files and renames)
+        git add -A
+        
+        # Check if there are any renames
+        git status
+        
+        # Commit the changes (including renames and deletions)
+        git commit -m "Merged main into stage and handled renames/deletions"
+        
         git push origin stage
